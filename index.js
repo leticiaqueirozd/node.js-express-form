@@ -1,13 +1,12 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const app = express();
 const port = 3010;
 const path = require('path');
 
 let vetor = [];
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json);
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json);
 
 app.get('/', (req, res) => {
   res.send('Olá Mundo!');
@@ -22,8 +21,8 @@ app.get('/vetor', (req, res) => {
   res.json(vetor);
 });
 
-app.get('/index', (req, res) => {
-  res.sendFile(path.resolve('pages/index.html'));
+app.get('/form', (req, res) => {
+  res.sendFile(path.resolve('pages/form.html'));
 });
 
 app.listen(port, () => {
